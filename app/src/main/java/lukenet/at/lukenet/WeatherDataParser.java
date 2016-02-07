@@ -1,6 +1,5 @@
 package lukenet.at.lukenet;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -20,9 +19,12 @@ public class WeatherDataParser {
         JSONObject obj = new JSONObject(weatherJsonStr);
         JSONObject dayValues = obj.getJSONArray("list").getJSONObject(dayIndex).getJSONObject("temp");
         System.out.println(dayValues.names());
-        return Double.parseDouble(dayValues.getString("max"));
-
-
-
+        return dayValues.getDouble("max");
     }
+
+    public static String[] parseWeatherJson(String weatherJsonStr) {
+
+        return null;
+    }
+
 }

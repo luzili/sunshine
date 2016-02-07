@@ -15,14 +15,14 @@ import java.net.URL;
 /**
  * Created by luke on 04/02/16.
  */
-public class WeatherDownloaderTask extends AsyncTask<String, Void, String> {
+public class WeatherDownloaderTask extends AsyncTask<String, Void, String[]> {
 
     public static final String LOG_TAG = WeatherDownloaderTask.class.getSimpleName();
     private static final String OPEN_WEATHER_BASE_URL = "http://api.openweathermap.org/data/2.5/forecast/daily?";
     ArrayAdapter<String> v = null;
 
     @Override
-    protected String doInBackground(String... params) {
+    protected String[] doInBackground(String... params) {
         //v = params[0];
 
         String postCode = params[0];
@@ -77,7 +77,7 @@ public class WeatherDownloaderTask extends AsyncTask<String, Void, String> {
                 }
             }
         }
-        return forecastJsonStr;
+        return WeatherDataParser.parseWeatherJson(forecastJsonStr);
     }
 
     /**
