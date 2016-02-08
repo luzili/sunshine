@@ -56,7 +56,7 @@ public class AlbumSelector extends AppCompatActivity {
         final ListView listView = (ListView) findViewById(R.id.listview);
         listView.setAdapter(forecastAdapter);
 
-        new WeatherDownloaderTask().execute("1004", "CH");
+        new WeatherDownloaderTask(forecastAdapter).execute("1004", "CH");
     }
 
     @Override
@@ -77,7 +77,7 @@ public class AlbumSelector extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_refresh) {
             Log.i("AlbumSelector", "Refresh button has been clicked");
-            new WeatherDownloaderTask().execute("1004", "CH");
+            new WeatherDownloaderTask(forecastAdapter).execute("1004", "CH");
             return true;
         }
 
